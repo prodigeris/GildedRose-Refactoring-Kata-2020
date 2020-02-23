@@ -7,7 +7,8 @@
             "App\\": "src/"
         }
     },
-  "require": {
-    "ext-json": "*"
-  }
+    "require": {
+        "ext-json": "*",
+        "php": "^7.4.0"
+    }
 }
