@@ -5,6 +5,8 @@ declare(strict_types=1);
 use App\Inventory\Builder\InventoryBuilder;
 use App\Inventory\Model\AgedBrie;
 use App\Inventory\Model\DexterityVest;
+use App\InventoryProperty\Model\Quality;
+use App\InventoryProperty\Model\SellIn;
 use App\Item;
 use PHPUnit\Framework\TestCase;
 
@@ -32,7 +34,7 @@ class InventoryBuilderTest extends TestCase
         $result = $this->itemBuilder->build($item);
 
         // then
-        $this->assertEquals(new DexterityVest(0, 0), $result);
+        $this->assertEquals(new DexterityVest(new SellIn(0), new Quality(0)), $result);
     }
 
     /**
@@ -47,6 +49,6 @@ class InventoryBuilderTest extends TestCase
         $result = $this->itemBuilder->build($item);
 
         // then
-        $this->assertEquals(new AgedBrie(0, 0), $result);
+        $this->assertEquals(new AgedBrie(new SellIn(0), new Quality(0)), $result);
     }
 }

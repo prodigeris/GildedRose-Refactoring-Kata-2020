@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace App\Inventory\Model;
 
+use App\InventoryProperty\Model\Quality;
+use App\InventoryProperty\Model\SellIn;
 use App\Item;
 
 abstract class AbstractInventory
 {
-    private int $sellIn;
-    private int $quality;
+    private SellIn $sellIn;
+    private Quality $quality;
 
-    public function __construct(int $sellIn, int $quality)
+    public function __construct(SellIn $sellIn, Quality $quality)
     {
         $this->sellIn = $sellIn;
         $this->quality = $quality;
@@ -19,25 +21,25 @@ abstract class AbstractInventory
 
     public static function build(Item $item): self
     {
-        return new static($item->sell_in, $item->quality);
+        return new static(new SellIn($item->sell_in), new Quality($item->quality));
     }
 
-    public function getSellIn(): int
+    public function getSellIn(): SellIn
     {
         return $this->sellIn;
     }
 
-    public function getQuality(): int
-    {
-        return $this->quality;
-    }
-
-    public function setSellIn(int $sellIn): void
+    public function setSellIn(SellIn $sellIn): void
     {
         $this->sellIn = $sellIn;
     }
 
-    public function setQuality(int $quality): void
+    public function getQuality(): Quality
+    {
+        return $this->quality;
+    }
+
+    public function setQuality(Quality $quality): void
     {
         $this->quality = $quality;
     }
