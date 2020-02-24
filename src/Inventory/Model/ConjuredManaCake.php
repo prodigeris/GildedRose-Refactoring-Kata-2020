@@ -7,4 +7,6 @@ namespace App\Inventory\Model;
 class ConjuredManaCake extends AbstractInventory
 {
     public const NAME = 'Conjured Mana Cake';
+
+    protected int $qualityStep = 2;
 }

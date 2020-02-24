@@ -13,6 +13,7 @@ abstract class AbstractInventory
     protected SellIn $sellIn;
     protected Quality $quality;
     protected Item $item;
+    protected int $qualityStep = 1;
 
     public function __construct(Item $item, SellIn $sellIn, Quality $quality)
     {
@@ -34,12 +35,11 @@ abstract class AbstractInventory
 
     public function dayPasses(): void
     {
-        $qualityDrop = 1;
         $this->sellIn->decrease();
-//        if ($this->sellIn->hasPassed()) {
-//            $qualityDrop = 2;
-//        }
-        $this->quality->decrease($qualityDrop);
+        if ($this->sellIn->hasPassed()) {
+            $this->qualityStep = 2;
+        }
+        $this->quality->decrease($this->qualityStep);
 
         $this->updateItem();
     }
