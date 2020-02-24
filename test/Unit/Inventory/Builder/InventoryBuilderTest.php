@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Inventory\Builder\InventoryBuilder;
 use App\Inventory\Model\AgedBrie;
 use App\Inventory\Model\DexterityVest;
+use App\Inventory\Model\ElixirOfTheMongoose;
 use App\InventoryProperty\Model\Quality;
 use App\InventoryProperty\Model\SellIn;
 use App\Item;
@@ -14,6 +15,7 @@ class InventoryBuilderTest extends TestCase
 {
     private const AGED_BRIE = 'Aged brie';
     private const DEXTERITY_VEST = '+5 Dexterity Vest';
+    private const ELIXIR_OF_THE_MONGOOSE = 'Elixir of the Mongoose';
 
     private InventoryBuilder $itemBuilder;
 
@@ -30,6 +32,9 @@ class InventoryBuilderTest extends TestCase
             ],
             [
                 'name' => self::AGED_BRIE, 'class' => AgedBrie::class,
+            ],
+            [
+                'name' => self::ELIXIR_OF_THE_MONGOOSE, 'class' => ElixirOfTheMongoose::class,
             ],
         ];
     }
