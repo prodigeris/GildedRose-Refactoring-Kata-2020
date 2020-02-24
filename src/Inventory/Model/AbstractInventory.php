@@ -37,7 +37,7 @@ abstract class AbstractInventory
     {
         $this->sellIn->decrease();
         if ($this->sellIn->hasPassed()) {
-            $this->qualityStep = 2;
+            $this->qualityStep *= 2;
         }
         $this->quality->decrease($this->qualityStep);
 

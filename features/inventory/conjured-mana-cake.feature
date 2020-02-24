@@ -8,6 +8,11 @@ Feature: Conjured Mana Cake
     When Day passes in Gilded Rose
     Then 0 item should be "Conjured Mana Cake" with sell in "1" and quality "2"
 
+  Scenario: Ages twice as fast when sell in has passed
+    Given There is "Conjured Mana Cake" with sell in "0" and quality "10"
+    When Day passes in Gilded Rose
+    Then 0 item should be "Conjured Mana Cake" with sell in "-1" and quality "6"
+
   Scenario: Quality cannot go lower than 0
     Given There is "Conjured Mana Cake" with sell in "2" and quality "0"
     When Day passes in Gilded Rose
