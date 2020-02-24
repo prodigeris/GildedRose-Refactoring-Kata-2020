@@ -21,17 +21,20 @@ class GildedRoseContext implements Context
         $this->inventoryContext = $scope->getEnvironment()->getContext(InventoryContext::class);
     }
 
+    protected function buildGildedRose(): GildedRose
+    {
+        return new GildedRose(
+            new InventoryBuilder(),
+            $this->inventoryContext->getInventory(),
+        );
+    }
+
 
     /**
      * @When /^Day passes in Gilded Rose$/
      */
     public function dayPassesInGildedRose(): void
     {
-        (new GildedRose(
-            new InventoryBuilder(),
-            $this->inventoryContext->getInventory(),
-        ))->updateQuality();
+        $this->buildGildedRose()->updateQuality();
     }
-
-
 }

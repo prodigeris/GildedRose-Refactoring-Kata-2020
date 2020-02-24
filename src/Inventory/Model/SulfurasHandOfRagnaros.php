@@ -16,7 +16,6 @@ class SulfurasHandOfRagnaros extends AbstractInventory
     public function __construct(Item $item, SellIn $sellIn, Quality $quality = null)
     {
         parent::__construct($item, $sellIn, new LegendaryQuality());
-        $this->updateItem();
     }
 
     public function dayPasses(): void

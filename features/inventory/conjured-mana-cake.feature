@@ -18,3 +18,8 @@ Feature: Conjured Mana Cake
     When Day passes in Gilded Rose
     Then 0 item should be "Conjured Mana Cake" with sell in "1" and quality "0"
 
+  Scenario: Quality cannot be above 50
+    Given There is "Conjured Mana Cake" with sell in "2" and quality "80"
+    When Day passes in Gilded Rose
+    Then 0 item should be "Conjured Mana Cake" with sell in "1" and quality "48"
+

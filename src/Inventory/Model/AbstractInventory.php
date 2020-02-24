@@ -20,6 +20,7 @@ abstract class AbstractInventory
         $this->item = $item;
         $this->sellIn = $sellIn;
         $this->quality = $quality;
+        $this->updateItem();
     }
 
     public static function build(Item $item): self
