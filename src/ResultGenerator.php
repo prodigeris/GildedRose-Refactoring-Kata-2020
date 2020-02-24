@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Inventory\Builder\InventoryBuilder;
 use App\Item;
 
 class ResultGenerator
@@ -23,7 +24,7 @@ class ResultGenerator
             new Item('Conjured Mana Cake', 3, 6)
         );
 
-        $app = new GildedRose($items);
+        $app = new GildedRose(new InventoryBuilder(), $items);
 
         $results = [];
 

@@ -29,18 +29,12 @@ abstract class AbstractInventory
         return $this->sellIn;
     }
 
-    public function setSellIn(SellIn $sellIn): void
-    {
-        $this->sellIn = $sellIn;
-    }
-
     public function getQuality(): Quality
     {
         return $this->quality;
     }
 
-    public function setQuality(Quality $quality): void
+    public function dayPasses(): void
     {
-        $this->quality = $quality;
     }
 }

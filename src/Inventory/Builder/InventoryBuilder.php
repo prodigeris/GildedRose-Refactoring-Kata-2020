@@ -32,7 +32,7 @@ class InventoryBuilder
             case ConjuredManaCake::NAME:
                 return ConjuredManaCake::build($item);
             default:
-                throw new RuntimeException('Unknown item');
+                throw new RuntimeException(sprintf('Unknown item [%s]', $item->name));
         }
     }
 }
