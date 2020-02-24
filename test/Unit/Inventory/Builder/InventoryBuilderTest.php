@@ -5,6 +5,7 @@ declare(strict_types=1);
 use App\Inventory\Builder\InventoryBuilder;
 use App\Inventory\Model\AgedBrie;
 use App\Inventory\Model\BackstagePasses;
+use App\Inventory\Model\ConjuredManaCake;
 use App\Inventory\Model\DexterityVest;
 use App\Inventory\Model\ElixirOfTheMongoose;
 use App\Inventory\Model\SulfurasHandOfRagnaros;
@@ -20,6 +21,7 @@ class InventoryBuilderTest extends TestCase
     private const ELIXIR_OF_THE_MONGOOSE = 'Elixir of the Mongoose';
     private const SULFURAS_HAND_OF_RAGNAROS = 'Sulfuras, Hand of Ragnaros';
     private const BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT = 'Backstage passes to a TAFKAL80ETC concert';
+    private const CONJURED_MANA_CAKE = 'Conjured Mana Cake';
     private const UNKNOWN = 'unknown';
 
     private InventoryBuilder $itemBuilder;
@@ -46,6 +48,9 @@ class InventoryBuilderTest extends TestCase
             ],
             [
                 'name' => self::BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT, 'class' => BackstagePasses::class,
+            ],
+            [
+                'name' => self::CONJURED_MANA_CAKE, 'class' => ConjuredManaCake::class,
             ],
         ];
     }

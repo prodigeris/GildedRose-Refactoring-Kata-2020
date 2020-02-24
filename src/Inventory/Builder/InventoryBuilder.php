@@ -7,6 +7,7 @@ namespace App\Inventory\Builder;
 use App\Inventory\Model\AbstractInventory;
 use App\Inventory\Model\AgedBrie;
 use App\Inventory\Model\BackstagePasses;
+use App\Inventory\Model\ConjuredManaCake;
 use App\Inventory\Model\DexterityVest;
 use App\Inventory\Model\ElixirOfTheMongoose;
 use App\Inventory\Model\SulfurasHandOfRagnaros;
@@ -28,6 +29,8 @@ class InventoryBuilder
                 return AgedBrie::build($item);
             case BackstagePasses::NAME:
                 return BackstagePasses::build($item);
+            case ConjuredManaCake::NAME:
+                return ConjuredManaCake::build($item);
             default:
                 throw new RuntimeException('Unknown item');
         }
