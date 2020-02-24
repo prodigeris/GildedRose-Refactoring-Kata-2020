@@ -18,7 +18,7 @@ class BackstagePasses extends AbstractInventory
         } else if ($this->sellIn->toInt() <= 10) {
             $this->quality->increase(2);
         } else {
-            $this->quality->increase();
+            $this->quality->increase(1);
         }
         $this->updateItem();
     }
