@@ -22,33 +22,31 @@ class InventoryBuilderTest extends TestCase
         $this->itemBuilder = new InventoryBuilder();
     }
 
-    /**
-     * @test
-     */
-    public function should_build_dexterity_vest_when_name_is_plus_five_dexterity_vest(): void
+    public function inventoryDataProvider(): array
     {
-        // given
-        $item = new Item(self::DEXTERITY_VEST, 0, 0);
-
-        // when
-        $result = $this->itemBuilder->build($item);
-
-        // then
-        $this->assertEquals(new DexterityVest(new SellIn(0), new Quality(0)), $result);
+        return [
+            [
+                'name' => self::DEXTERITY_VEST, 'class' => DexterityVest::class,
+            ],
+            [
+                'name' => self::AGED_BRIE, 'class' => AgedBrie::class,
+            ],
+        ];
     }
 
     /**
      * @test
+     * @dataProvider inventoryDataProvider
      */
-    public function should_build_aged_brie_when_name_is_aged_brie(): void
+    public function should_build_the_right_class_when_using_item_name(string $name, string $class): void
     {
         // given
-        $item = new Item(self::AGED_BRIE, 0, 0);
+        $item = new Item($name, 0, 0);
 
         // when
         $result = $this->itemBuilder->build($item);
 
         // then
-        $this->assertEquals(new AgedBrie(new SellIn(0), new Quality(0)), $result);
+        $this->assertEquals(new $class(new SellIn(0), new Quality(0)), $result);
     }
 }
