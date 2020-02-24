@@ -6,8 +6,7 @@ use App\Inventory\Builder\InventoryBuilder;
 
 final class GildedRose
 {
-
-    private array $items = [];
+    private array $items;
 
     private InventoryBuilder $inventoryBuilder;
 

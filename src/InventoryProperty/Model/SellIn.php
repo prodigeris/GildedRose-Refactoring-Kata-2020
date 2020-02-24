@@ -10,17 +10,21 @@ class SellIn
 
     public function __construct(int $days)
     {
-        if($days < 1) {
-            $days = 0;
-        }
         $this->days = $days;
     }
 
-    /**
-     * @return int
-     */
-    public function getDays(): int
+    public function toInt(): int
     {
         return $this->days;
+    }
+
+    public function decrease(): void
+    {
+        $this->days--;
+    }
+
+    public function hasPassed(): bool
+    {
+        return 1 > $this->days;
     }
 }

@@ -10,31 +10,37 @@ use App\Item;
 
 abstract class AbstractInventory
 {
-    private SellIn $sellIn;
-    private Quality $quality;
+    protected SellIn $sellIn;
+    protected Quality $quality;
+    protected Item $item;
 
-    public function __construct(SellIn $sellIn, Quality $quality)
+    public function __construct(Item $item, SellIn $sellIn, Quality $quality)
     {
+        $this->item = $item;
         $this->sellIn = $sellIn;
         $this->quality = $quality;
     }
 
     public static function build(Item $item): self
     {
-        return new static(new SellIn($item->sell_in), new Quality($item->quality));
+        return new static($item, new SellIn($item->sell_in), new Quality($item->quality));
     }
 
-    public function getSellIn(): SellIn
+    protected function updateItem(): void
     {
-        return $this->sellIn;
-    }
-
-    public function getQuality(): Quality
-    {
-        return $this->quality;
+        $this->item->sell_in = $this->sellIn->toInt();
+        $this->item->quality = $this->quality->toInt();
     }
 
     public function dayPasses(): void
     {
+        $qualityDrop = 1;
+        $this->sellIn->decrease();
+//        if ($this->sellIn->hasPassed()) {
+//            $qualityDrop = 2;
+//        }
+        $this->quality->decrease($qualityDrop);
+
+        $this->updateItem();
     }
 }

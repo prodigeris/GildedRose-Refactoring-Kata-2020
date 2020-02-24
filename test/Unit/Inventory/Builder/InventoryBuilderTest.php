@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 class InventoryBuilderTest extends TestCase
 {
-    private const AGED_BRIE = 'Aged brie';
+    private const AGED_BRIE = 'Aged Brie';
     private const DEXTERITY_VEST = '+5 Dexterity Vest';
     private const ELIXIR_OF_THE_MONGOOSE = 'Elixir of the Mongoose';
     private const SULFURAS_HAND_OF_RAGNAROS = 'Sulfuras, Hand of Ragnaros';
@@ -68,7 +68,7 @@ class InventoryBuilderTest extends TestCase
         $result = $this->itemBuilder->build($item);
 
         // then
-        $this->assertEquals(new $class(new SellIn(0), new Quality(0)), $result);
+        $this->assertEquals(new $class($item, new SellIn(0), new Quality(0)), $result);
     }
 
     /**

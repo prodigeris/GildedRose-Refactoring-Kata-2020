@@ -34,6 +34,7 @@ class ResultGenerator
             }
             $app->updateQuality();
         }
+
         return $results;
     }
 }
