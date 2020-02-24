@@ -8,10 +8,5 @@ class AgedBrie extends AbstractInventory
 {
     public const NAME = 'Aged Brie';
 
-    public function dayPasses(): void
-    {
-        $this->sellIn->decrease();
-        $this->quality->increase();
-        $this->updateItem();
-    }
+    protected int $qualityStep = -1;
 }

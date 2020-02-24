@@ -24,3 +24,10 @@ COPY src ./
 
 RUN set -eux; \
     composer dump-autoload --classmap-authoritative
+
+ARG XDEBUG_VERSION=2.8.0beta1
+
+RUN mkdir -p /usr/src/php/ext/xdebug && \
+    curl -fsSL https://xdebug.org/files/xdebug-${XDEBUG_VERSION}.tgz | tar xz -C /usr/src/php/ext/xdebug --strip 1 && \
+    docker-php-ext-install xdebug && \
+    echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini

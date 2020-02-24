@@ -32,12 +32,12 @@ class Quality
         return $this->quality;
     }
 
-    public function increase($byPoints = 1): void
+    public function increase(int $byPoints): void
     {
         $this->setQuality($this->quality + $byPoints);
     }
 
-    public function decrease($byPoints = 1): void
+    public function decrease(int $byPoints): void
     {
         $this->setQuality($this->quality - $byPoints);
     }
