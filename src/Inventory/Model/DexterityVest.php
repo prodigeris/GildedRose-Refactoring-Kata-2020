@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Inventory\Model;
 
 class DexterityVest extends AbstractInventory
 {

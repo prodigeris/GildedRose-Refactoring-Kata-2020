@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Inventory\Model;
+
+use App\Item;
 
 abstract class AbstractInventory
 {
@@ -13,6 +15,11 @@ abstract class AbstractInventory
     {
         $this->sellIn = $sellIn;
         $this->quality = $quality;
+    }
+
+    public static function build(Item $item): self
+    {
+        return new static($item->sell_in, $item->quality);
     }
 
     public function getSellIn(): int

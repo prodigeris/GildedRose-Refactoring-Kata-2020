@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-use App\AgedBrie;
-use App\DexterityVest;
+use App\Inventory\Builder\InventoryBuilder;
+use App\Inventory\Model\AgedBrie;
+use App\Inventory\Model\DexterityVest;
 use App\Item;
-use App\InventoryBuilder;
 use PHPUnit\Framework\TestCase;
 
 class InventoryBuilderTest extends TestCase
 {
     private const AGED_BRIE = 'Aged brie';
-    const DEXTERITY_VEST = '+5 Dexterity Vest';
+    private const DEXTERITY_VEST = '+5 Dexterity Vest';
 
     private InventoryBuilder $itemBuilder;
 
