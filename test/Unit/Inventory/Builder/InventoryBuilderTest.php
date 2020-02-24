@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Inventory\Builder\InventoryBuilder;
 use App\Inventory\Model\AgedBrie;
+use App\Inventory\Model\BackstagePasses;
 use App\Inventory\Model\DexterityVest;
 use App\Inventory\Model\ElixirOfTheMongoose;
 use App\Inventory\Model\SulfurasHandOfRagnaros;
@@ -17,7 +18,9 @@ class InventoryBuilderTest extends TestCase
     private const AGED_BRIE = 'Aged brie';
     private const DEXTERITY_VEST = '+5 Dexterity Vest';
     private const ELIXIR_OF_THE_MONGOOSE = 'Elixir of the Mongoose';
-    const SULFURAS_HAND_OF_RAGNAROS = 'Sulfuras, Hand of Ragnaros';
+    private const SULFURAS_HAND_OF_RAGNAROS = 'Sulfuras, Hand of Ragnaros';
+    private const BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT = 'Backstage passes to a TAFKAL80ETC concert';
+    private const UNKNOWN = 'unknown';
 
     private InventoryBuilder $itemBuilder;
 
@@ -41,6 +44,9 @@ class InventoryBuilderTest extends TestCase
             [
                 'name' => self::SULFURAS_HAND_OF_RAGNAROS, 'class' => SulfurasHandOfRagnaros::class,
             ],
+            [
+                'name' => self::BACKSTAGE_PASSES_TO_A_TAFKAL_80_ETC_CONCERT, 'class' => BackstagePasses::class,
+            ],
         ];
     }
 
@@ -58,5 +64,20 @@ class InventoryBuilderTest extends TestCase
 
         // then
         $this->assertEquals(new $class(new SellIn(0), new Quality(0)), $result);
+    }
+
+    /**
+     * @test
+     */
+    public function should_throw_exception_when_item_is_unknown(): void
+    {
+        // given
+        $item = new Item(self::UNKNOWN, 0, 0);
+
+        // then
+        $this->expectException(RuntimeException::class);
+
+        // when
+        $this->itemBuilder->build($item);
     }
 }
