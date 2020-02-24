@@ -1,6 +1,6 @@
 Feature: Aged Brie
   In order to be in the Gilded Rose
-  As a sulfuras item
+  As a aged brie item
   I need to follow basic rules
 
   Scenario: Quality increases when ages

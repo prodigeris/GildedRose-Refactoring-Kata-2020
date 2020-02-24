@@ -1,6 +1,6 @@
-Feature: Aged Brie
+Feature: Backstage passes
   In order to be in the Gilded Rose
-  As a sulfuras item
+  As a backstage passes item
   I need to follow basic rules
 
   Scenario: Quality increases when ages
