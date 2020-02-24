@@ -1,7 +1,7 @@
 Feature: Aged Brie
   In order to be in the Gilded Rose
   As a aged brie item
-  I need to follow basic rules
+  I need to follow special rules
 
   Scenario: Quality increases when ages
     Given There is "Aged Brie" with sell in "2" and quality "20"

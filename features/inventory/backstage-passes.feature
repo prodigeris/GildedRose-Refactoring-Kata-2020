@@ -1,7 +1,7 @@
 Feature: Backstage passes
   In order to be in the Gilded Rose
   As a backstage passes item
-  I need to follow basic rules
+  I need to follow special rules
 
   Scenario: Quality increases when ages
     Given There is "Backstage passes to a TAFKAL80ETC concert" with sell in "20" and quality "20"

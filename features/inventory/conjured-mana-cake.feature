@@ -1,7 +1,7 @@
 Feature: Conjured Mana Cake
   In order to be in the Gilded Rose
   As a conjured mana cake item
-  I need to follow basic rules
+  I need to follow special rules
 
   Scenario: Ages twice as fast as normal
     Given There is "Conjured Mana Cake" with sell in "2" and quality "4"
