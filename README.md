@@ -1,51 +1,76 @@
-Requirements
+# Gilded Rose Refactoring Kata
+PHP Solution
 ------------
+Updated PHP solution to the [Gilded Rose Refactoring Kata](https://github.com/emilybache/GildedRose-Refactoring-Kata).
 
-**PHP 7:**
+It's using Docker container with PHP 7.4, Behat, PHPUnit, Infection.
 
-This is usually bundled with your operating system, or fetchable using a package manager like `apt` or `homebrew`.
+This solution has `100% coverage` and `98% MSI`.
 
-Windows users can find the latest version here: https://windows.php.net/download#php-7.3
+To enforce business rules there are Behat scenarios that use Gherkin language.
 
-If you want to compile from source code, that can be found here: https://www.php.net/downloads.php
+I've used Gold Master test strategy to ensure successful refactoring,
+however, I've later switch to regular Behat and Unit tests.
 
-**Composer:**
+Non-Anemic domain models were chosen for Inventory.
 
-Composer is PHP's main package and dependency management tool.
+They are responsible for how they are built and how the behave
+as the day passes.
 
-It can be downloaded here: https://getcomposer.org/download/
+`Quality` and `SellIn` are self-validating value objects.
 
 Getting Started
 ---------------
 
-To begin the kata, install the dependencies and run `phpunit`:
-
+To run the container, use
 ```
-cd php7
-composer install
-vendor/bin/phpunit
+docker-compose up
 ```
 
-If the "install" command does not work, try running `composer update` instead.
-This will tell composer that it has permission to look for a newer version of
-its dependencies.
-
-If things are still not cooperating, you can try this extreme approach:
+To run unit / functional tests, use
 
 ```
-composer remove phpunit/phpunit
-composer require phpunit/phpunit
+docker-compose exec php vendor/bin/phpunit
 ```
 
-To exercise the code outside of phpunit, for example to visually confirm that it is working,
-use the `texttest_fixture` script:
+To generate coverage report, use
 
 ```
-php fixtures/texttest_fixture.php
+docker-compose exec php vendor/bin/phpunit --coverage-html ./coverage
 ```
 
-Tips
-----
+To run Behat tests, use
 
-PHPUnit has a very thorough reference manual. It would be particularly useful to explore the
-[Data Providers](https://phpunit.readthedocs.io/en/8.1/writing-tests-for-phpunit.html#data-providers) section.
+```
+docker-compose exec php vendor/bin/behat
+```
+
+To run Infection (mutation) tests, use
+
+```
+docker-compose exec php ./infection.phar
+```
+
+Gold Master
+---------------
+
+`ResultGeneratorTest` compares GildedRose results with Gold Master `results.txt` data.
+
+If you want to update `results.txt`, run this command:
+```
+docker-compose exec php php ./fixtures/texttest_fixture.php
+```
+
+Gold Master test runs together with Unit tests.
+
+To run it solely, use:
+
+```
+docker-compose exec php vendor/bin/phpunit --filter=ResultGeneratorTest
+```
+
+Roll the credits
+---------------
+[2019 version that's outdated](https://github.com/prodigeris/PHP-GildedRose-Refactoring-Kata)
+
+Arnas Kazlauskas
