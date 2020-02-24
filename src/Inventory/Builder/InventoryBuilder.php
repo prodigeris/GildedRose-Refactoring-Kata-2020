@@ -10,20 +10,23 @@ use App\Inventory\Model\DexterityVest;
 use App\Inventory\Model\ElixirOfTheMongoose;
 use App\Inventory\Model\SulfurasHandOfRagnaros;
 use App\Item;
+use RuntimeException;
 
 class InventoryBuilder
 {
     public function build(Item $item): AbstractInventory
     {
-        if ($item->name === SulfurasHandOfRagnaros::NAME) {
-            return SulfurasHandOfRagnaros::build($item);
+        switch ($item->name) {
+            case SulfurasHandOfRagnaros::NAME:
+                return SulfurasHandOfRagnaros::build($item);
+            case ElixirOfTheMongoose::NAME:
+                return ElixirOfTheMongoose::build($item);
+            case DexterityVest::NAME:
+                return DexterityVest::build($item);
+            case AgedBrie::NAME:
+                return AgedBrie::build($item);
+            default:
+                throw new RuntimeException('Unknown item');
         }
-        if ($item->name === ElixirOfTheMongoose::NAME) {
-            return ElixirOfTheMongoose::build($item);
-        }
-        if ($item->name === DexterityVest::NAME) {
-           return DexterityVest::build($item);
-        }
-        return AgedBrie::build($item);
     }
 }

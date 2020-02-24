@@ -6,5 +6,5 @@ namespace App\Inventory\Model;
 
 class AgedBrie extends AbstractInventory
 {
-
+    public const NAME = 'Aged brie';
 }
